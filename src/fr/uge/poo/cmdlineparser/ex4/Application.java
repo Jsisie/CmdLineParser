@@ -16,17 +16,17 @@ public class Application {
         cmdParser.registerWithoutParameter("-no-borders", () -> {
             options.setBordered(true);
         });
-        cmdParser.registerWithOneParameter("-border-width", (arg) -> {
-            options.setBorderWidth(Integer.parseInt(arg));
+        cmdParser.registerWithParameters("-border-width", 1, (argList) -> {
+            options.setBorderWidth(Integer.parseInt(argList.get(0)));
         });
-        cmdParser.registerWithOneParameter("-window-name", (arg) -> {
-            options.setWindowName(arg);
+        cmdParser.registerWithParameters("-window-name", 1, (argList) -> {
+            options.setWindowName(argList.get(0));
         });
-        cmdParser.registerWithManyParameter("-min-size", 2, (argList) -> {
+        cmdParser.registerWithParameters("-min-size", 2, (argList) -> {
             options.setWindowWidth(Integer.parseInt(argList.get(0)));
             options.setWindowHeight(Integer.parseInt(argList.get(1)));
         });
-        cmdParser.registerWithManyParameter("-remote-server", 2, (argList) -> {
+        cmdParser.registerWithParameters("-remote-server", 2, (argList) -> {
             var hostname = argList.get(0);
             var port = Integer.parseInt(argList.get(1));
             options.setServ(new InetSocketAddress(hostname, port));
@@ -36,7 +36,6 @@ public class Application {
         var opt = options.build();
         List<Path> files = result.stream().map(Path::of).toList();
         files.forEach(System.out::println);
-        System.out.println(opt.toString());
-
+        System.out.println(opt);
     }
 }

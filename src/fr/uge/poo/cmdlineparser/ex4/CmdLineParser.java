@@ -62,22 +62,9 @@ public class CmdLineParser {
         registerOption(name, new Option(name, 0, arg -> action.run()));
     }
 
-    public void registerWithOneParameter(String option, Consumer<String> operation) {
+    public void registerWithParameters(String option, int nbParameters, Consumer<List<String>> operation) {
         Objects.requireNonNull(option);
         Objects.requireNonNull(operation);
-        if (options.containsKey(option))
-            throw new IllegalStateException();
-        registerOption(option, new Option(option, 1, params -> {
-            if (params.size() != 1)
-                throw new IllegalStateException("Option one argument");
-            operation.accept(params.get(0));
-        }));
-    }
-
-    public void registerWithManyParameter(String option, int nbParameters, Consumer<List<String>> operation) {
-        Objects.requireNonNull(option);
-        Objects.requireNonNull(operation);
-        var opt = options.get(option);
         if (options.containsKey(option))
             throw new IllegalStateException();
         registerOption(option, new Option(option, nbParameters, params -> {
