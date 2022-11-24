@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="5762be08-9266-4f82-8cd0-7b7455e3fb11" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CmdLineParser.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fr/uge/poo/cmdlineparser/ex1/Application.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fr/uge/poo/cmdlineparser/ex1/CmdLineParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fr/uge/poo/cmdlineparser/ex2/Application.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fr/uge/poo/cmdlineparser/ex2/CmdLineParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fr/uge/poo/cmdlineparser/ex3/Application.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fr/uge/poo/cmdlineparser/ex3/CmdLineParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fr/uge/poo/cmdlineparser/ex3/PaintOptions.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fr/uge/poo/cmdlineparser/ex4/Application.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fr/uge/poo/cmdlineparser/ex4/CmdLineParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fr/uge/poo/cmdlineparser/ex4/CmdLineParserObserver.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fr/uge/poo/cmdlineparser/ex4/PaintOptions.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fr/uge/poo/cmdlineparser/ex5/Application.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fr/uge/poo/cmdlineparser/ex5/CmdLineParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fr/uge/poo/cmdlineparser/ex5/PaintOptions.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Interface" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
+  <component name="ProjectId" id="2Hv7Dqlhm5x4f5UTOzw3lTNpKYS" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/Programs/Java/DesignPattern/CmdLineParser/src/fr/uge/poo/cmdlineparser/ex5"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Programs\Java\DesignPattern\CmdLineParser\src\fr\uge\poo\cmdlineparser\ex5" />
+      <recent name="D:\Programs\Java\DesignPattern\CmdLineParser\src\fr\uge\poo\cmdlineparser\ex4" />
+      <recent name="D:\Programs\Java\DesignPattern\CmdLineParser\src\fr\uge\poo\cmdlineparser\ex3" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Programs\Java\DesignPattern\CmdLineParser\src\fr\uge\poo\cmdlineparser\ex4" />
+      <recent name="D:\Programs\Java\DesignPattern\CmdLineParser\src\fr\uge\poo\cmdlineparser\ex2" />
+      <recent name="D:\Programs\Java\DesignPattern\CmdLineParser\src\fr\uge\poo\cmdlineparser\ex1" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="fr.uge.poo.cmdlineparser.ex4.Application" />
+      <module name="CmdLineParser" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="fr.uge.poo.cmdlineparser.ex4.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Application" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5762be08-9266-4f82-8cd0-7b7455e3fb11" name="Changes" comment="" />
+      <created>1669153587045</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1669153587045</updated>
+      <workItem from="1669153588596" duration="2573000" />
+      <workItem from="1669190712653" duration="35000" />
+      <workItem from="1669207663954" duration="6298000" />
+      <workItem from="1669310296518" duration="8612000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="fr.uge.poo.cmdlineparser.ex4.CmdLineParser$$Lambda$21/0x0000000801004880" memberName="arg" />
+      </pinned-members>
+    </pin-to-top-manager>
+  </component>
+</project>
