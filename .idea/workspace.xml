@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5762be08-9266-4f82-8cd0-7b7455e3fb11" name="Changes" comment="first commit (Ex 1-2-3-4)">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/uge/poo/cmdlineparser/ex4/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/poo/cmdlineparser/ex4/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/uge/poo/cmdlineparser/ex4/CmdLineParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/poo/cmdlineparser/ex4/CmdLineParser.java" afterDir="false" />
+    <list default="true" id="5762be08-9266-4f82-8cd0-7b7455e3fb11" name="Changes" comment="removed WithOneParameters and WithManyParameters for WithParameters">
+      <change beforePath="$PROJECT_DIR$/src/fr/uge/poo/cmdlineparser/ex4/CmdLineParserObserver.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/uge/poo/cmdlineparser/ex5/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/poo/cmdlineparser/ex5/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/uge/poo/cmdlineparser/ex5/CmdLineParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/poo/cmdlineparser/ex5/CmdLineParser.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +89,7 @@
       <workItem from="1669190712653" duration="35000" />
       <workItem from="1669207663954" duration="6298000" />
       <workItem from="1669310296518" duration="8612000" />
-      <workItem from="1669324309079" duration="1471000" />
+      <workItem from="1669324309079" duration="3839000" />
     </task>
     <task id="LOCAL-00001" summary="first commit (Ex 1-2-3-4)">
       <created>1669324335249</created>
@@ -98,7 +98,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669324335249</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="removed WithOneParameters and WithManyParameters for WithParameters">
+      <created>1669326419000</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1669326419000</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -117,7 +124,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first commit (Ex 1-2-3-4)" />
-    <option name="LAST_COMMIT_MESSAGE" value="first commit (Ex 1-2-3-4)" />
+    <MESSAGE value="removed WithOneParameters and WithManyParameters for WithParameters" />
+    <option name="LAST_COMMIT_MESSAGE" value="removed WithOneParameters and WithManyParameters for WithParameters" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
