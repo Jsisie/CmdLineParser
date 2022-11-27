@@ -104,9 +104,7 @@ class CmdLineParserTest {
 
         public void setCmdLineParserUp() {
             cmdLineParser.addOption(
-                    new CmdLineParser.Option.OptionsBuilder("-legacy", 0, __ -> {
-                        optionsBuilder.setLegacy(true);
-                    }).addAliases("-lgcy").build()
+                    new CmdLineParser.Option.OptionsBuilder("-legacy", 0, __ -> optionsBuilder.setLegacy(true)).addAliases("-lgcy").build()
             );
             cmdLineParser.registerWithParameters("-window-name", 1, (argList) -> optionsBuilder.setWindowName(argList.get(0)));
         }
