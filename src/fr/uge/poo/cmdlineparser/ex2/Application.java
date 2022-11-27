@@ -45,23 +45,26 @@ public class Application {
     public static void main(String[] args) {
         var options = new PaintSettings();
         String[] arguments={"-legacy","-no-borders","-window-name","filename1","-border-width","4"};
+
         var cmdParser = new CmdLineParser();
-        cmdParser.registerOption("-legacy",(__)->{options.setLegacy(true);});
-        cmdParser.registerOption("-no-borders",(__)->{options.setBordered(true);});
-        cmdParser.registerOption("-border-width",(it)->{
-        	if(!it.hasNext()) throw new IllegalStateException("you gave no arguments");
+
+        cmdParser.registerOption("-legacy", __ -> options.setLegacy(true));
+        cmdParser.registerOption("-no-borders", __ -> options.setBordered(true));
+        cmdParser.registerOption("-border-width", (it) -> {
+        	if(!it.hasNext())
+                throw new IllegalStateException("you gave no arguments");
         	options.setBorderWidth(Integer.parseInt(it.next()));
         	});
-        cmdParser.registerOption("-window-name",(it)->{
-        	if(!it.hasNext()) throw new IllegalStateException("you gave no arguments");
+        cmdParser.registerOption("-window-name", (it) -> {
+        	if(!it.hasNext())
+                throw new IllegalStateException("you gave no arguments");
         	options.setBorderName(it.next());
         	});
 
         List<String> result = cmdParser.process(arguments);
         List<Path> files = result.stream().map(Path::of).toList();
-        // this code replaces the rest of the application
         files.forEach(System.out::println);
-        System.out.println(options.toString());
+        System.out.println(options);
 
     }
 }

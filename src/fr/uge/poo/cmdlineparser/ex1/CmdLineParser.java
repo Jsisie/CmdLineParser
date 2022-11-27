@@ -10,9 +10,8 @@ public class CmdLineParser {
     public void registerOption(String option, Runnable process) {
         Objects.requireNonNull(option);
         Objects.requireNonNull(process);
-        if(registeredOptions.containsKey(option)) {
+        if(registeredOptions.containsKey(option))
         	throw new IllegalStateException();
-        }
         registeredOptions.put(option,process); 
     }
 
@@ -21,13 +20,11 @@ public class CmdLineParser {
         ArrayList<String> files = new ArrayList<>();
         for (String argument : arguments) {
         	var process = registeredOptions.get(argument);
-            if (process!=null) {
+            if (process!=null)
                 process.run();
-            } else {
+            else
                 files.add(argument);
-            }
         }
         return files;
     }
-  
 }

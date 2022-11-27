@@ -10,12 +10,8 @@ public class Application {
         var options = new PaintOptions.PaintOptionsBuilder();
         String[] arguments = {"-legacy", "-no-borders", "-window-name", "filename1", "-border-width", "4", "-min-size", "600", "600", "-remote-server", "Chatavion", "8080"};
         var cmdParser = new CmdLineParser();
-        cmdParser.registerWithoutParameter("-legacy", () -> {
-            options.setLegacy(true);
-        });
-        cmdParser.registerWithoutParameter("-no-borders", () -> {
-            options.setBordered(true);
-        });
+        cmdParser.registerWithoutParameter("-legacy", () -> options.setLegacy(true));
+        cmdParser.registerWithoutParameter("-no-borders", () -> options.setBordered(true));
         cmdParser.registerWithParameters("-border-width", 1, (argList) -> {
             options.setBorderWidth(Integer.parseInt(argList.get(0)));
         });

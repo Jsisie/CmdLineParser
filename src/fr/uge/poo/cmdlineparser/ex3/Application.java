@@ -11,19 +11,17 @@ public class Application {
         var options = new PaintOptions.PaintOptionsBuilder();
         String[] arguments = {"-legacy", "-no-borders", "-window-name", "filename1", "-border-width", "4", "-min-size", "600", "600", "-remote-server", "Chatavion", "8080"};
         var cmdParser = new CmdLineParser();
-        cmdParser.registerOption("-legacy", (__) -> {
-            options.setLegacy(true);
-        });
-        cmdParser.registerOption("-no-borders", (__) -> {
-            options.setBordered(true);
-        });
+
+        cmdParser.registerOption("-legacy", __ -> options.setLegacy(true));
+        cmdParser.registerOption("-no-borders", __ -> options.setBordered(true));
         cmdParser.registerOption("-border-width", (it) -> {
             if (!it.hasNext())
                 throw new IllegalStateException("no arguments passed");
             options.setBorderWidth(Integer.parseInt(it.next()));
         });
         cmdParser.registerOption("-window-name", (it) -> {
-            if (!it.hasNext()) throw new IllegalStateException("no arguments passed");
+            if (!it.hasNext())
+                throw new IllegalStateException("no arguments passed");
             options.setWindowName(it.next());
         });
         cmdParser.registerOption("-min-size", (it) -> {
@@ -48,7 +46,6 @@ public class Application {
         var opt = options.build();
         List<Path> files = result.stream().map(Path::of).toList();
         files.forEach(System.out::println);
-        System.out.println(opt.toString());
-
+        System.out.println(opt);
     }
 }
