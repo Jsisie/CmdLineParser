@@ -102,7 +102,7 @@ class CmdLineParserTest {
     @Nested
     public class aliasesTest {
 
-        public void setCmdLineParserUp(String[] arguments) {
+        public void setCmdLineParserUp() {
             cmdLineParser.addOption(
                     new CmdLineParser.Option.OptionsBuilder("-legacy", 0, __ -> {
                         optionsBuilder.setLegacy(true);
@@ -114,7 +114,7 @@ class CmdLineParserTest {
         @Test
         public void testAliasShouldWork() {
             String[] arguments = {"-window-name", "test", "-lgcy"};
-            setCmdLineParserUp(arguments);
+            setCmdLineParserUp();
             cmdLineParser.process(arguments);
             var opt = optionsBuilder.build();
             assertEquals("PaintOptions[bordered = false, bordered-width = 10, legacy = true, serv = null, window-name = test, window-width = 500, window-height = 500]",
@@ -125,7 +125,7 @@ class CmdLineParserTest {
         @Test
         public void testAliasShouldWork2() {
             String[] arguments = {"-window-name", "test", "-legacy"};
-            setCmdLineParserUp(arguments);
+            setCmdLineParserUp();
             cmdLineParser.process(arguments);
             var opt = optionsBuilder.build();
             assertEquals("PaintOptions[bordered = false, bordered-width = 10, legacy = true, serv = null, window-name = test, window-width = 500, window-height = 500]",
@@ -136,7 +136,7 @@ class CmdLineParserTest {
         @Test
         public void testAliasShouldNotWork() {
             String[] arguments = {"-window-name", "test", "-l"};
-            setCmdLineParserUp(arguments);
+            setCmdLineParserUp();
             assertThrows(IllegalArgumentException.class, () -> cmdLineParser.process(arguments));
         }
     }
