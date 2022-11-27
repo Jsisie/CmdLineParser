@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5762be08-9266-4f82-8cd0-7b7455e3fb11" name="Changes" comment="changed/moved packages names">
-      <change afterPath="$PROJECT_DIR$/src/main/test/ex5/CmdLineParserTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="5762be08-9266-4f82-8cd0-7b7455e3fb11" name="Changes" comment="creation ex6">
+      <change afterPath="$PROJECT_DIR$/src/main/test/ex6/CmdLineParserTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/fr/uge/poo/cmdlineparser/ex5/Application.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/fr/uge/poo/cmdlineparser/ex5/CmdLineParser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/fr/uge/poo/cmdlineparser/ex5/PaintSettings.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,9 +26,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/fr/uge/poo/cmdlineparser/ex5/CmdLineParser.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -53,7 +52,7 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "create.test.in.the.same.root": "true",
     "last_directory_selection": "D:/Programs/Java/DesignPattern/CmdLineParser/src/main/test",
-    "last_opened_file_path": "D:/Programs/Java/DesignPattern/CmdLineParser/src/fr/uge/poo/cmdlineparser/ex5",
+    "last_opened_file_path": "D:/Programs/Java/DesignPattern/CmdLineParser/src/main/fr/uge/poo/cmdlineparser/ex6",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2"
@@ -61,6 +60,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Programs\Java\DesignPattern\CmdLineParser\src\main\fr\uge\poo\cmdlineparser\ex6" />
       <recent name="D:\Programs\Java\DesignPattern\CmdLineParser\src\fr\uge\poo\cmdlineparser\ex5" />
       <recent name="D:\Programs\Java\DesignPattern\CmdLineParser\src\fr\uge\poo\cmdlineparser\ex4" />
       <recent name="D:\Programs\Java\DesignPattern\CmdLineParser\src\fr\uge\poo\cmdlineparser\ex3" />
@@ -76,8 +76,11 @@
     <key name="CreateTestDialog.RecentsKey">
       <recent name="fr.uge.poo.cmdlineparser.ex5.test" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="test.ex6" />
+    </key>
   </component>
-  <component name="RunManager" selected="JUnit.CmdLineParserTest (1)">
+  <component name="RunManager" selected="JUnit.CmdLineParserTest (2)">
     <configuration name="CmdLineParserTest (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CmdLineParser" />
       <extension name="coverage">
@@ -88,6 +91,21 @@
       </extension>
       <option name="PACKAGE_NAME" value="test.ex5" />
       <option name="MAIN_CLASS_NAME" value="test.ex5.CmdLineParserTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CmdLineParserTest (2)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CmdLineParser" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.ex6.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test.ex6" />
+      <option name="MAIN_CLASS_NAME" value="test.ex6.CmdLineParserTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -145,21 +163,6 @@
       <module name="CmdLineParser" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="fr.uge.poo.cmdlineparser.ex5.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="fr.uge.poo.cmdlineparser.ex5.test" />
-      <option name="MAIN_CLASS_NAME" value="fr.uge.poo.cmdlineparser.ex5.test.CmdLineParserTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CmdLineParserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CmdLineParser" />
-      <extension name="coverage">
-        <pattern>
           <option name="PATTERN" value="test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
@@ -173,11 +176,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CmdLineParserTest (2)" />
         <item itemvalue="JUnit.CmdLineParserTest (1)" />
         <item itemvalue="JUnit.CmdLineParserTest$aliasesTest.testAliasShouldNotWork" />
         <item itemvalue="JUnit.CmdLineParserTest$aliasesTest.testAliasShouldWork2" />
         <item itemvalue="JUnit.CmdLineParserTest$aliasesTest.testAliasShouldWork" />
-        <item itemvalue="JUnit.CmdLineParserTest (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -193,7 +196,7 @@
       <workItem from="1669190712653" duration="35000" />
       <workItem from="1669207663954" duration="6298000" />
       <workItem from="1669310296518" duration="8612000" />
-      <workItem from="1669324309079" duration="32463000" />
+      <workItem from="1669324309079" duration="32808000" />
     </task>
     <task id="LOCAL-00001" summary="first commit (Ex 1-2-3-4)">
       <created>1669324335249</created>
@@ -237,7 +240,35 @@
       <option name="project" value="LOCAL" />
       <updated>1669588883755</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="JUnit tests for ex5 file CmdLineParser">
+      <created>1669589796178</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1669589796178</updated>
+    </task>
+    <task id="LOCAL-00008" summary="changed CmdLineParserTest ex5">
+      <created>1669589829038</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1669589829038</updated>
+    </task>
+    <task id="LOCAL-00009" summary="changed CmdLineParserTest ex5">
+      <created>1669589844475</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1669589844475</updated>
+    </task>
+    <task id="LOCAL-00010" summary="creation ex6">
+      <created>1669589899335</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1669589899335</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -261,7 +292,10 @@
     <MESSAGE value="ex5 finished" />
     <MESSAGE value="refactored ex1/2/3/4" />
     <MESSAGE value="changed/moved packages names" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed/moved packages names" />
+    <MESSAGE value="JUnit tests for ex5 file CmdLineParser" />
+    <MESSAGE value="changed CmdLineParserTest ex5" />
+    <MESSAGE value="creation ex6" />
+    <option name="LAST_COMMIT_MESSAGE" value="creation ex6" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
