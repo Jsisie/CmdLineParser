@@ -2,7 +2,6 @@ package fr.uge.poo.cmdlineparser.ex2;
 
 import java.nio.file.Path;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Application {
 

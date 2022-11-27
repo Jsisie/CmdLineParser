@@ -1,10 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5762be08-9266-4f82-8cd0-7b7455e3fb11" name="Changes" comment="removed WithOneParameters and WithManyParameters for WithParameters">
-      <change beforePath="$PROJECT_DIR$/src/fr/uge/poo/cmdlineparser/ex4/CmdLineParserObserver.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/uge/poo/cmdlineparser/ex5/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/poo/cmdlineparser/ex5/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/uge/poo/cmdlineparser/ex5/CmdLineParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/poo/cmdlineparser/ex5/CmdLineParser.java" afterDir="false" />
+    <list default="true" id="5762be08-9266-4f82-8cd0-7b7455e3fb11" name="Changes" comment="refactored ex1/2/3/4">
+      <change afterPath="$PROJECT_DIR$/src/main/test/CmdLineParserTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CmdLineParser.iml" beforeDir="false" afterPath="$PROJECT_DIR$/CmdLineParser.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/uge/poo/cmdlineparser/ex1/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/fr/uge/poo/cmdlineparser/ex1/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/uge/poo/cmdlineparser/ex1/CmdLineParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/fr/uge/poo/cmdlineparser/ex1/CmdLineParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/uge/poo/cmdlineparser/ex2/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/fr/uge/poo/cmdlineparser/ex2/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/uge/poo/cmdlineparser/ex2/CmdLineParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/fr/uge/poo/cmdlineparser/ex2/CmdLineParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/uge/poo/cmdlineparser/ex3/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/fr/uge/poo/cmdlineparser/ex3/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/uge/poo/cmdlineparser/ex3/CmdLineParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/fr/uge/poo/cmdlineparser/ex3/CmdLineParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/uge/poo/cmdlineparser/ex3/PaintOptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/fr/uge/poo/cmdlineparser/ex3/PaintOptions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/uge/poo/cmdlineparser/ex4/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/fr/uge/poo/cmdlineparser/ex4/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/uge/poo/cmdlineparser/ex4/CmdLineParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/fr/uge/poo/cmdlineparser/ex4/CmdLineParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/uge/poo/cmdlineparser/ex4/PaintOptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/fr/uge/poo/cmdlineparser/ex4/PaintOptions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/uge/poo/cmdlineparser/ex5/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/fr/uge/poo/cmdlineparser/ex5/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/uge/poo/cmdlineparser/ex5/CmdLineParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/fr/uge/poo/cmdlineparser/ex5/CmdLineParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/uge/poo/cmdlineparser/ex5/PaintSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/fr/uge/poo/cmdlineparser/ex5/PaintSettings.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,11 +32,15 @@
       <list>
         <option value="Class" />
         <option value="Interface" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/fr/uge/poo/cmdlineparser/ex5/CmdLineParser.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -37,14 +54,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Programs/Java/DesignPattern/CmdLineParser/src/fr/uge/poo/cmdlineparser/ex5&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "create.test.in.the.same.root": "true",
+    "last_directory_selection": "D:/Programs/Java/DesignPattern/CmdLineParser/src/main/test",
+    "last_opened_file_path": "D:/Programs/Java/DesignPattern/CmdLineParser/src/fr/uge/poo/cmdlineparser/ex5",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Programs\Java\DesignPattern\CmdLineParser\src\fr\uge\poo\cmdlineparser\ex5" />
@@ -56,24 +84,99 @@
       <recent name="D:\Programs\Java\DesignPattern\CmdLineParser\src\fr\uge\poo\cmdlineparser\ex2" />
       <recent name="D:\Programs\Java\DesignPattern\CmdLineParser\src\fr\uge\poo\cmdlineparser\ex1" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="fr.uge.poo.cmdlineparser.ex5.test" />
+    </key>
   </component>
-  <component name="RunManager">
-    <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="fr.uge.poo.cmdlineparser.ex4.Application" />
+  <component name="RunManager" selected="JUnit.CmdLineParserTest (1)">
+    <configuration name="CmdLineParserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CmdLineParser" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="fr.uge.poo.cmdlineparser.ex4.*" />
+          <option name="PATTERN" value="fr.uge.poo.cmdlineparser.ex5.test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="fr.uge.poo.cmdlineparser.ex5.test" />
+      <option name="MAIN_CLASS_NAME" value="fr.uge.poo.cmdlineparser.ex5.test.CmdLineParserTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CmdLineParserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CmdLineParser" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test" />
+      <option name="MAIN_CLASS_NAME" value="test.CmdLineParserTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CmdLineParserTest.testProcessShouldWorks" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CmdLineParser" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="fr.uge.poo.cmdlineparser.ex5.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="fr.uge.poo.cmdlineparser.ex5.test" />
+      <option name="MAIN_CLASS_NAME" value="fr.uge.poo.cmdlineparser.ex5.test.CmdLineParserTest" />
+      <option name="METHOD_NAME" value="testProcessShouldWorks" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CmdLineParserTest.testProcessShouldWorksComplex" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CmdLineParser" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="fr.uge.poo.cmdlineparser.ex5.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="fr.uge.poo.cmdlineparser.ex5.test" />
+      <option name="MAIN_CLASS_NAME" value="fr.uge.poo.cmdlineparser.ex5.test.CmdLineParserTest" />
+      <option name="METHOD_NAME" value="testProcessShouldWorksComplex" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CmdLineParserTest.testProcessShouldWorksComplexOverriding" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CmdLineParser" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="fr.uge.poo.cmdlineparser.ex5.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="fr.uge.poo.cmdlineparser.ex5.test" />
+      <option name="MAIN_CLASS_NAME" value="fr.uge.poo.cmdlineparser.ex5.test.CmdLineParserTest" />
+      <option name="METHOD_NAME" value="testProcessShouldWorksComplexOverriding" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Application" />
+        <item itemvalue="JUnit.CmdLineParserTest (1)" />
+        <item itemvalue="JUnit.CmdLineParserTest" />
+        <item itemvalue="JUnit.CmdLineParserTest.testProcessShouldWorksComplexOverriding" />
+        <item itemvalue="JUnit.CmdLineParserTest.testProcessShouldWorksComplex" />
+        <item itemvalue="JUnit.CmdLineParserTest.testProcessShouldWorks" />
       </list>
     </recent_temporary>
   </component>
@@ -89,7 +192,7 @@
       <workItem from="1669190712653" duration="35000" />
       <workItem from="1669207663954" duration="6298000" />
       <workItem from="1669310296518" duration="8612000" />
-      <workItem from="1669324309079" duration="3839000" />
+      <workItem from="1669324309079" duration="31701000" />
     </task>
     <task id="LOCAL-00001" summary="first commit (Ex 1-2-3-4)">
       <created>1669324335249</created>
@@ -105,7 +208,28 @@
       <option name="project" value="LOCAL" />
       <updated>1669326419000</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="creation ex5">
+      <created>1669371608796</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1669371608796</updated>
+    </task>
+    <task id="LOCAL-00004" summary="ex5 finished">
+      <created>1669583683877</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1669583683877</updated>
+    </task>
+    <task id="LOCAL-00005" summary="refactored ex1/2/3/4">
+      <created>1669584279569</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1669584279569</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -125,7 +249,10 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first commit (Ex 1-2-3-4)" />
     <MESSAGE value="removed WithOneParameters and WithManyParameters for WithParameters" />
-    <option name="LAST_COMMIT_MESSAGE" value="removed WithOneParameters and WithManyParameters for WithParameters" />
+    <MESSAGE value="creation ex5" />
+    <MESSAGE value="ex5 finished" />
+    <MESSAGE value="refactored ex1/2/3/4" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactored ex1/2/3/4" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

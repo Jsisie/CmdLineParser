@@ -19,12 +19,13 @@ public class CmdLineParser {
             if (it.hasNext())
                 paramList.add(it.next());
             else
-                throw new IllegalStateException("Iterator size and nbParameters should be equals");
+                throw new IllegalArgumentException("The number of parameters and number of parameters given should be equals");
         }
         return paramList;
     }
 
     public List<String> process(String[] arguments) {
+        Objects.requireNonNull(arguments);
         ArrayList<String> files = new ArrayList<>();
         var it = List.of(arguments).iterator();
         while (it.hasNext()) {
@@ -46,7 +47,7 @@ public class CmdLineParser {
             throw new IllegalArgumentException("Options are missing");
     }
 
-    void processTokenOpt(String arg, Iterator<String> it) {
+    private void processTokenOpt(String arg, Iterator<String> it) {
         var opt = optionsMap.get(arg);
         if (opt == null)
             throw new IllegalArgumentException(arg + "is not an option");
@@ -62,7 +63,7 @@ public class CmdLineParser {
     public void addOption(Option opt) {
         Objects.requireNonNull(opt);
         if (optionsMap.containsKey(opt.name))
-            throw new IllegalStateException("Option already added to the map");
+            throw new IllegalStateException("The map already contains this option");
         optionsMap.put(opt.name, opt);
         registerAlias(opt);
         if(opt.isRequired) {
@@ -76,11 +77,11 @@ public class CmdLineParser {
             optionsMap.put(alias, opt);
     }
 
-    public void registerOption(String name, Option opt) {
+    private void registerOption(String name, Option opt) {
         Objects.requireNonNull(name);
         Objects.requireNonNull(opt);
         if (optionsMap.containsKey(name))
-            throw new IllegalStateException();
+            throw new IllegalStateException("The map already contains this option");
         optionsMap.put(name, opt);
         if (opt.isRequired)
             requiredOptionsSet.add(opt.name);
@@ -95,23 +96,10 @@ public class CmdLineParser {
     public void registerWithParameters(String name, int nbParameters, Consumer<List<String>> action) {
         Objects.requireNonNull(name);
         Objects.requireNonNull(action);
-        if (optionsMap.containsKey(name))
-            throw new IllegalStateException();
-        registerOption(name, new Option(name, nbParameters, params -> {
-            if (params.size() != nbParameters)
-                throw new IllegalArgumentException("Option one argument");
-            action.accept(params);
-        }));
+        if(nbParameters < 0)
+            throw new IllegalArgumentException("The number of parameters should be greater than or equals to 0");
+        registerOption(name, new Option(name, nbParameters, action::accept));
     }
-
-
-
-
-
-
-
-
-
 
     static public class Option {
 

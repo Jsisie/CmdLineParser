@@ -4,7 +4,7 @@ import java.net.InetSocketAddress;
 import java.util.HashSet;
 import java.util.Objects;
 
-class PaintSettings {
+public class PaintSettings {
     private final String windowName;
     private final boolean legacy;
     private final boolean bordered;
@@ -26,7 +26,7 @@ class PaintSettings {
 
     @Override
     public String toString() {
-        return "PaintOptions [ bordered = " + bordered + " bordered-width = " + borderWidth + ", legacy = " + legacy + ", serv = " + serv + ", window-name = " + windowName + ", window-width = " + windowWidth + ", window-height = " + windowHeight + " ]";
+        return "PaintOptions[bordered = " + bordered + ", bordered-width = " + borderWidth + ", legacy = " + legacy + ", serv = " + serv + ", window-name = " + windowName + ", window-width = " + windowWidth + ", window-height = " + windowHeight + "]";
     }
 
     public static class PaintSettingsBuilder {

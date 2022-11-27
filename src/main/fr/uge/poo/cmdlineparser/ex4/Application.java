@@ -23,9 +23,7 @@ public class Application {
             options.setWindowHeight(Integer.parseInt(argList.get(1)));
         });
         cmdParser.registerWithParameters("-remote-server", 2, (argList) -> {
-            var hostname = argList.get(0);
-            var port = Integer.parseInt(argList.get(1));
-            options.setServ(new InetSocketAddress(hostname, port));
+            options.setServ(new InetSocketAddress(argList.get(0), Integer.parseInt(argList.get(1))));
         });
 
         List<String> result = cmdParser.process(arguments);
