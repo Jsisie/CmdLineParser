@@ -5,9 +5,9 @@ import java.util.function.Consumer;
 
 public class CmdLineParser {
 
-    private final HashSet<String> requiredOpt = new HashSet<>();
-    private final HashSet<String> seenOptions = new HashSet<>();
-    private final HashMap<String, Option> options = new HashMap<>();
+    private final HashSet<String> requiredOptionsSet = new HashSet<>();
+    private final HashSet<String> seenOptionsSet = new HashSet<>();
+    private final HashMap<String, Option> optionsMap = new HashMap<>();
 
     private static boolean isOption(String arg) {
         return arg.startsWith("-");
@@ -22,16 +22,6 @@ public class CmdLineParser {
                 throw new IllegalStateException("Iterator size and nbParameters should be equals");
         }
         return paramList;
-    }
-
-    public void registerOption(String name, Option opt) {
-        Objects.requireNonNull(name);
-        Objects.requireNonNull(opt);
-        if (options.containsKey(name))
-            throw new IllegalStateException();
-        options.put(name, opt);
-        if (opt.required)
-            requiredOpt.add(opt.name);
     }
 
     public List<String> process(String[] arguments) {
@@ -50,35 +40,17 @@ public class CmdLineParser {
     }
 
     private void requiredOptions() {
-        var missingRequiredOptions = new HashSet<>(requiredOpt);
-        missingRequiredOptions.removeAll(seenOptions);
+        var missingRequiredOptions = new HashSet<>(requiredOptionsSet);
+        missingRequiredOptions.removeAll(seenOptionsSet);
         if (missingRequiredOptions.size() != 0)
             throw new IllegalArgumentException("Options are missing");
     }
 
-    public void registerWithoutParameter(String name, Runnable action) {
-        Objects.requireNonNull(name);
-        Objects.requireNonNull(action);
-        registerOption(name, new Option(name, 0, arg -> action.run()));
-    }
-
-    public void registerWithParameters(String option, int nbParameters, Consumer<List<String>> operation) {
-        Objects.requireNonNull(option);
-        Objects.requireNonNull(operation);
-        if (options.containsKey(option))
-            throw new IllegalStateException();
-        registerOption(option, new Option(option, nbParameters, params -> {
-            if (params.size() != nbParameters)
-                throw new IllegalArgumentException("Option one argument");
-            operation.accept(params);
-        }));
-    }
-
     void processTokenOpt(String arg, Iterator<String> it) {
-        var opt = options.get(arg);
+        var opt = optionsMap.get(arg);
         if (opt == null)
             throw new IllegalArgumentException(arg + "is not an option");
-        seenOptions.add(arg);
+        seenOptionsSet.add(arg);
         var params = getParameters(it, opt.nbParameters);
         try {
             opt.action.accept(params);
@@ -87,34 +59,97 @@ public class CmdLineParser {
         }
     }
 
+    public void addOption(Option opt) {
+        Objects.requireNonNull(opt);
+        if (optionsMap.containsKey(opt.name))
+            throw new IllegalStateException("Option already added to the map");
+        optionsMap.put(opt.name, opt);
+        registerAlias(opt);
+        if(opt.isRequired) {
+            requiredOptionsSet.add(opt.name);
+            requiredOptionsSet.addAll(opt.aliases);
+        }
+    }
+
+    private void registerAlias(Option opt) {
+        for(var alias : opt.aliases)
+            optionsMap.put(alias, opt);
+    }
+
+    public void registerOption(String name, Option opt) {
+        Objects.requireNonNull(name);
+        Objects.requireNonNull(opt);
+        if (optionsMap.containsKey(name))
+            throw new IllegalStateException();
+        optionsMap.put(name, opt);
+        if (opt.isRequired)
+            requiredOptionsSet.add(opt.name);
+    }
+
+    public void registerWithoutParameter(String name, Runnable action) {
+        Objects.requireNonNull(name);
+        Objects.requireNonNull(action);
+        registerOption(name, new Option(name, 0, arg -> action.run()));
+    }
+
+    public void registerWithParameters(String name, int nbParameters, Consumer<List<String>> action) {
+        Objects.requireNonNull(name);
+        Objects.requireNonNull(action);
+        if (optionsMap.containsKey(name))
+            throw new IllegalStateException();
+        registerOption(name, new Option(name, nbParameters, params -> {
+            if (params.size() != nbParameters)
+                throw new IllegalArgumentException("Option one argument");
+            action.accept(params);
+        }));
+    }
+
+
+
+
+
+
+
+
+
+
     static public class Option {
 
         private final String name;
         private final int nbParameters;
         private final Consumer<List<String>> action;
-        private final boolean required;
+        private boolean isRequired;
+        private String doc;
+        private HashSet<String> aliases;
 
-        private Option(OptionBuilder b) {
-            this.name = b.name;
-            this.nbParameters = b.nbParameters;
-            this.action = b.action;
-            this.required = b.required;
+        private Option(OptionsBuilder optionsBuilder) {
+            this.name = optionsBuilder.name;
+            this.nbParameters = optionsBuilder.nbParameters;
+            this.action = optionsBuilder.action;
+            this.isRequired = optionsBuilder.isRequired;
+            this.doc = optionsBuilder.doc;
+            this.aliases = optionsBuilder.aliases;
         }
 
-        private Option(String name, int nbParameters, Consumer<List<String>> action) {
+        public Option(String name, int nbParameters, Consumer<List<String>> action) {
+            Objects.requireNonNull(name);
+            Objects.requireNonNull(action);
+            if (nbParameters < 0)
+                throw new IllegalStateException("nbParameters must be higher than 0");
             this.name = name;
             this.nbParameters = nbParameters;
             this.action = action;
-            this.required = false;
         }
 
-        static public class OptionBuilder {
-            private final Consumer<List<String>> action;
-            private final String name;
-            private final int nbParameters;
-            private boolean required = false;
+        public static class OptionsBuilder {
+            private Consumer<List<String>> action;
+            private String name;
+            private int nbParameters;
+            private boolean isRequired;
+            private String doc;
+            private final HashSet<String> aliases = new HashSet<>();
 
-            public OptionBuilder(String name, int nbParameters, Consumer<List<String>> action) {
+            public OptionsBuilder(String name, int nbParameters, Consumer<List<String>> action) {
                 Objects.requireNonNull(name);
                 Objects.requireNonNull(action);
                 if (nbParameters < 0)
@@ -124,14 +159,42 @@ public class CmdLineParser {
                 this.action = action;
             }
 
-            public OptionBuilder optional() {
-                this.required = false;
+            public OptionsBuilder setName(String name) {
+                Objects.requireNonNull(name);
+                this.name = name;
+                return this;
+            }
+            public OptionsBuilder setNbParameters(int nbParameters) {
+                if (nbParameters < 0)
+                    throw new IllegalStateException("nbParameters must be higher than 0");
+                this.nbParameters = nbParameters;
+                return this;
+            }
+            public OptionsBuilder setAction(Consumer<List<String>> action) {
+                Objects.requireNonNull(action);
+                this.action = action;
                 return this;
             }
 
-            public OptionBuilder required() {
-                this.required = true;
+            public OptionsBuilder isRequired() {
+                isRequired = true;
                 return this;
+            }
+
+            public OptionsBuilder doc(String doc) {
+                Objects.requireNonNull(doc);
+                this.doc = doc;
+                return this;
+            }
+
+            public OptionsBuilder addAliases(String... names) {
+                Objects.requireNonNull(names);
+                aliases.addAll(Arrays.asList(names));
+                return this;
+            }
+
+            public Option build() {
+                return new Option(this);
             }
         }
     }

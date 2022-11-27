@@ -1,9 +1,10 @@
 package fr.uge.poo.cmdlineparser.ex5;
 
 import java.net.InetSocketAddress;
+import java.util.HashSet;
 import java.util.Objects;
 
-class PaintOptions {
+class PaintSettings {
     private final String windowName;
     private final boolean legacy;
     private final boolean bordered;
@@ -11,8 +12,9 @@ class PaintOptions {
     private final int windowHeight;
     private final int borderWidth;
     private final InetSocketAddress serv;
+    private static final HashSet<String> aliases = new HashSet<>();
 
-    private PaintOptions(PaintOptionsBuilder optionsBuilder) {
+    private PaintSettings(PaintSettingsBuilder optionsBuilder) {
         this.bordered = optionsBuilder.bordered;
         this.borderWidth = optionsBuilder.borderWidth;
         this.legacy = optionsBuilder.legacy;
@@ -27,7 +29,7 @@ class PaintOptions {
         return "PaintOptions [ bordered = " + bordered + " bordered-width = " + borderWidth + ", legacy = " + legacy + ", serv = " + serv + ", window-name = " + windowName + ", window-width = " + windowWidth + ", window-height = " + windowHeight + " ]";
     }
 
-    static class PaintOptionsBuilder {
+    public static class PaintSettingsBuilder {
 
         private String windowName;
         private boolean legacy = false;
@@ -37,46 +39,46 @@ class PaintOptions {
         private int borderWidth = 10;
         private InetSocketAddress serv;
 
-        public PaintOptionsBuilder setWindowName(String windowName) {
+        public PaintSettingsBuilder setWindowName(String windowName) {
             this.windowName = windowName;
             return this;
         }
 
-        public PaintOptionsBuilder setLegacy(boolean legacy) {
+        public PaintSettingsBuilder setLegacy(boolean legacy) {
             this.legacy = legacy;
             return this;
         }
 
-        public PaintOptionsBuilder setBordered(boolean bordered) {
+        public PaintSettingsBuilder setBordered(boolean bordered) {
             this.bordered = bordered;
             return this;
         }
 
-        public PaintOptionsBuilder setWindowWidth(int windowWidth) {
+        public PaintSettingsBuilder setWindowWidth(int windowWidth) {
             this.windowWidth = windowWidth;
             return this;
         }
 
-        public PaintOptionsBuilder setWindowHeight(int windowHeight) {
+        public PaintSettingsBuilder setWindowHeight(int windowHeight) {
             this.windowHeight = windowHeight;
             return this;
         }
 
-        public PaintOptionsBuilder setBorderWidth(int borderWidth) {
+        public PaintSettingsBuilder setBorderWidth(int borderWidth) {
             this.borderWidth = borderWidth;
             return this;
         }
 
-        public PaintOptionsBuilder setServ(InetSocketAddress serv) {
+        public PaintSettingsBuilder setServ(InetSocketAddress serv) {
             Objects.requireNonNull(serv);
             this.serv = serv;
             return this;
         }
 
-        public PaintOptions build() {
+        public PaintSettings build() {
             if (windowName == null)
                 throw new IllegalStateException();
-            return new PaintOptions(this);
+            return new PaintSettings(this);
         }
     }
 }
