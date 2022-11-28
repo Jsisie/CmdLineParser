@@ -50,7 +50,7 @@ public class CmdLineParser {
     private void processTokenOpt(String arg, Iterator<String> it) {
         var opt = optionsMap.get(arg);
         if (opt == null)
-            throw new IllegalArgumentException(arg + "is not an option");
+            throw new IllegalArgumentException(arg + " is not an option");
         seenOptionsSet.add(arg);
         var params = getParameters(it, opt.nbParameters);
         try {
@@ -66,14 +66,14 @@ public class CmdLineParser {
             throw new IllegalStateException("The map already contains this option");
         optionsMap.put(opt.name, opt);
         registerAlias(opt);
-        if(opt.isRequired) {
+        if (opt.isRequired) {
             requiredOptionsSet.add(opt.name);
             requiredOptionsSet.addAll(opt.aliases);
         }
     }
 
     private void registerAlias(Option opt) {
-        for(var alias : opt.aliases)
+        for (var alias : opt.aliases)
             optionsMap.put(alias, opt);
     }
 
@@ -96,9 +96,26 @@ public class CmdLineParser {
     public void registerWithParameters(String name, int nbParameters, Consumer<List<String>> action) {
         Objects.requireNonNull(name);
         Objects.requireNonNull(action);
-        if(nbParameters < 0)
+        if (nbParameters < 0)
             throw new IllegalArgumentException("The number of parameters should be greater than or equals to 0");
         registerOption(name, new Option(name, nbParameters, action::accept));
+    }
+
+    public void usage() {
+        if(optionsMap.isEmpty()) {
+            System.out.println("No options have been registered yet");
+            return;
+        }
+        var listName = new ArrayList<>(optionsMap.values().stream().map(opt -> opt.name).distinct().toList());
+        Collections.sort(listName);
+        System.out.println("List of the options registered :");
+        for (var name : listName) {
+            var opt = optionsMap.get(name);
+            System.out.print(" " + name);
+            if (opt.doc != null)
+                System.out.print(", \"" + optionsMap.get(name).doc + "\"");
+            System.out.print("\n");
+        }
     }
 
     static public class Option {
@@ -130,12 +147,12 @@ public class CmdLineParser {
         }
 
         public static class OptionsBuilder {
+            private final HashSet<String> aliases = new HashSet<>();
             private Consumer<List<String>> action;
             private String name;
             private int nbParameters;
             private boolean isRequired;
             private String doc;
-            private final HashSet<String> aliases = new HashSet<>();
 
             public OptionsBuilder(String name, int nbParameters, Consumer<List<String>> action) {
                 Objects.requireNonNull(name);
@@ -152,12 +169,14 @@ public class CmdLineParser {
                 this.name = name;
                 return this;
             }
+
             public OptionsBuilder setNbParameters(int nbParameters) {
                 if (nbParameters < 0)
                     throw new IllegalStateException("nbParameters must be higher than 0");
                 this.nbParameters = nbParameters;
                 return this;
             }
+
             public OptionsBuilder setAction(Consumer<List<String>> action) {
                 Objects.requireNonNull(action);
                 this.action = action;

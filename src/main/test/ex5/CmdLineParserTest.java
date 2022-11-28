@@ -5,6 +5,8 @@ import fr.uge.poo.cmdlineparser.ex5.PaintSettings;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.net.InetSocketAddress;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -69,7 +71,7 @@ class CmdLineParserTest {
         }
 
         @Test
-        public void testProcessShouldWorksEasy() {
+        public void testProcessShouldWorkEasy() {
             String[] arguments = {"-min-size", "555", "555"};
             cmdLineParser.registerWithParameters("-min-size", 2, (argList) -> {
                 optionsBuilder.setWindowWidth(Integer.parseInt(argList.get(0)));
@@ -83,7 +85,7 @@ class CmdLineParserTest {
         }
 
         @Test
-        public void testProcessShouldWorksComplex() {
+        public void testProcessShouldWorkComplex() {
             String[] arguments = {"-min-size", "555", "555", "-window-name", "Test", "-no-borders"};
             cmdLineParser.registerWithParameters("-min-size", 2, (argList) -> {
                 optionsBuilder.setWindowWidth(Integer.parseInt(argList.get(0)));
@@ -96,6 +98,16 @@ class CmdLineParserTest {
             assertEquals("PaintOptions[bordered = true, bordered-width = 10, legacy = false, serv = null, window-name = Test, window-width = 555, window-height = 555]",
                     opt.toString()
             );
+        }
+
+        @Test
+        public void processUnregisteredOptionShouldThrowException() {
+            String[] arguments = {"-min-size", "555", "555", "-unregisteredOption"};
+            cmdLineParser.registerWithParameters("-min-size", 2, (argList) -> {
+                optionsBuilder.setWindowWidth(Integer.parseInt(argList.get(0)));
+                optionsBuilder.setWindowHeight(Integer.parseInt(argList.get(1)));
+            });
+            assertThrows(IllegalArgumentException.class, () -> cmdLineParser.process(arguments));
         }
     }
 
@@ -138,4 +150,16 @@ class CmdLineParserTest {
             assertThrows(IllegalArgumentException.class, () -> cmdLineParser.process(arguments));
         }
     }
+
+    // DON'T KNOW HOW TO TEST THIS
+    @Nested
+    public class usageTest {
+        @Test
+        public void testMapEmpty() {
+            cmdLineParser.usage();
+
+        }
+    }
+
+
 }
