@@ -1,19 +1,17 @@
-package test.ex5;
+package fr.uge.poo.cmdlineparser.ex6;
 
 import fr.uge.poo.cmdlineparser.ex5.CmdLineParser;
 import fr.uge.poo.cmdlineparser.ex5.PaintSettings;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 import java.net.InetSocketAddress;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class CmdLineParserTest {
-    private final CmdLineParser cmdLineParser = new CmdLineParser();
-    private final PaintSettings.PaintSettingsBuilder optionsBuilder = new PaintSettings.PaintSettingsBuilder();
+    private final fr.uge.poo.cmdlineparser.ex5.CmdLineParser cmdLineParser = new fr.uge.poo.cmdlineparser.ex5.CmdLineParser();
+    private final fr.uge.poo.cmdlineparser.ex5.PaintSettings.PaintSettingsBuilder optionsBuilder = new PaintSettings.PaintSettingsBuilder();
 
     @Nested
     public class registerTest {
@@ -116,7 +114,7 @@ class CmdLineParserTest {
 
         public void setCmdLineParserUp() {
             cmdLineParser.addOption(
-                    new CmdLineParser.Option.OptionsBuilder("-legacy", 0, __ -> optionsBuilder.setLegacy(true)).addAliases("-lgcy").build()
+                    new fr.uge.poo.cmdlineparser.ex5.CmdLineParser.Option.OptionsBuilder("-legacy", 0, __ -> optionsBuilder.setLegacy(true)).addAliases("-lgcy").build()
             );
             cmdLineParser.registerWithParameters("-window-name", 1, (argList) -> optionsBuilder.setWindowName(argList.get(0)));
         }
@@ -158,6 +156,42 @@ class CmdLineParserTest {
         public void testMapEmpty() {
             cmdLineParser.usage();
 
+        }
+    }
+
+    @Nested
+    public class newSetConsumerTest {
+        @Test
+        public void testSetConsumerNull() {
+            var opt = new fr.uge.poo.cmdlineparser.ex5.CmdLineParser.Option.OptionsBuilder("test", 1);
+            assertThrows(NullPointerException.class, () -> opt.setConsumer(null));
+        }
+
+        @Test
+        public void testSetBiConsumerIntegerToIntegerNull() {
+            var opt = new fr.uge.poo.cmdlineparser.ex5.CmdLineParser.Option.OptionsBuilder("test", 1);
+            assertThrows(NullPointerException.class, () -> opt.setBiConsumerIntegerToInteger(null));
+        }
+
+        @Test
+        public void testSetBiConsumerInetSocketAddressNull() {
+            var opt = new CmdLineParser.Option.OptionsBuilder("test", 1);
+            assertThrows(NullPointerException.class, () -> opt.setBiConsumerInetSocketAddress(null));
+        }
+
+        @Test
+        public void testSetConsumerShouldWork() {
+            // TODO
+        }
+
+        @Test
+        public void testSetBiConsumerIntegerToIntegerShouldWork() {
+            // TODO
+        }
+
+        @Test
+        public void testSetBiConsumerInetSocketAddressShouldWork() {
+            // TODO
         }
     }
 

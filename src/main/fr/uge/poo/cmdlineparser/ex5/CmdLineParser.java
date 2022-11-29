@@ -1,7 +1,9 @@
 package fr.uge.poo.cmdlineparser.ex5;
 
 import java.util.*;
+import java.util.function.BiConsumer;
 import java.util.function.Consumer;
+import java.util.function.IntConsumer;
 
 public class CmdLineParser {
 
@@ -102,7 +104,7 @@ public class CmdLineParser {
     }
 
     public void usage() {
-        if(optionsMap.isEmpty()) {
+        if (optionsMap.isEmpty()) {
             System.out.println("No options have been registered yet");
             return;
         }
@@ -164,6 +166,14 @@ public class CmdLineParser {
                 this.action = action;
             }
 
+            public OptionsBuilder(String name, int nbParameters) {
+                Objects.requireNonNull(name);
+                if (nbParameters < 0)
+                    throw new IllegalStateException("nbParameters must be higher than 0");
+                this.name = name;
+                this.nbParameters = nbParameters;
+            }
+
             public OptionsBuilder setName(String name) {
                 Objects.requireNonNull(name);
                 this.name = name;
@@ -180,6 +190,30 @@ public class CmdLineParser {
             public OptionsBuilder setAction(Consumer<List<String>> action) {
                 Objects.requireNonNull(action);
                 this.action = action;
+                return this;
+            }
+
+            public OptionsBuilder setConsumer(Consumer<List<String>> action) {
+                Objects.requireNonNull(action);
+                this.action = action;
+                return this;
+            }
+
+            public OptionsBuilder setIntConsumer(IntConsumer action) {
+                Objects.requireNonNull(action);
+                this.action = acc -> action.accept(Integer.parseInt(acc.get(0)));
+                return this;
+            }
+
+            public OptionsBuilder setBiConsumerIntegerToInteger(BiConsumer<Integer, Integer> action) {
+                Objects.requireNonNull(action);
+                this.action = acc -> action.accept(Integer.parseInt(acc.get(0)), Integer.parseInt(acc.get(1)));
+                return this;
+            }
+
+            public OptionsBuilder setBiConsumerInetSocketAddress(BiConsumer<String, Integer> action) {
+                Objects.requireNonNull(action);
+                this.action = acc -> action.accept(acc.get(0), Integer.parseInt(acc.get(1)));
                 return this;
             }
 
