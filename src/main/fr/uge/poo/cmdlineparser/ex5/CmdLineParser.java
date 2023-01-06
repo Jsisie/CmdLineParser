@@ -46,14 +46,14 @@ public class CmdLineParser {
         var missingRequiredOptions = new HashSet<>(requiredOptionsSet);
         missingRequiredOptions.removeAll(seenOptionsSet);
         if (missingRequiredOptions.size() != 0)
-            throw new IllegalArgumentException("Options are missing");
+            throw new IllegalArgumentException("A required option has not been given in arguments");
     }
 
-    private void processTokenOpt(String arg, Iterator<String> it) {
-        var opt = optionsMap.get(arg);
+    private void processTokenOpt(String name, Iterator<String> it) {
+        var opt = optionsMap.get(name);
         if (opt == null)
-            throw new IllegalArgumentException(arg + " is not an option");
-        seenOptionsSet.add(arg);
+            throw new IllegalArgumentException(name + " is not an option");
+        seenOptionsSet.add(name);
         var params = getParameters(it, opt.nbParameters);
         try {
             opt.action.accept(params);
@@ -89,10 +89,16 @@ public class CmdLineParser {
             requiredOptionsSet.add(opt.name);
     }
 
-    public void registerWithoutParameter(String name, Runnable action) {
+    public void addFlag(String name, Runnable action) {
         Objects.requireNonNull(name);
         Objects.requireNonNull(action);
         registerOption(name, new Option(name, 0, arg -> action.run()));
+    }
+
+    public void addOptionWithOneParameter(String name, Consumer<List<String>> action) {
+        Objects.requireNonNull(name);
+        Objects.requireNonNull(action);
+        registerOption(name, new Option(name, 0, action));
     }
 
     public void registerWithParameters(String name, int nbParameters, Consumer<List<String>> action) {
@@ -115,7 +121,14 @@ public class CmdLineParser {
             var opt = optionsMap.get(name);
             System.out.print(" " + name);
             if (opt.doc != null)
-                System.out.print(", \"" + optionsMap.get(name).doc + "\"");
+                System.out.print(", \"" + opt.doc + "\"");
+            var conflictWith = opt.conflicts;
+            conflictWith.stream()
+                    .filter(listName::contains)
+                    .findAny()
+                    .ifPresent(o -> {
+                        throw new IllegalStateException("Option " + o + " is in conflict with previously seen options");
+                    });
             System.out.print("\n");
         }
     }
@@ -125,9 +138,10 @@ public class CmdLineParser {
         private final String name;
         private final int nbParameters;
         private final Consumer<List<String>> action;
+        public Set<String> conflicts = new HashSet<>();
         private boolean isRequired;
         private String doc;
-        private HashSet<String> aliases;
+        private Set<String> aliases = new HashSet<>();
 
         private Option(OptionsBuilder optionsBuilder) {
             this.name = optionsBuilder.name;
@@ -136,6 +150,7 @@ public class CmdLineParser {
             this.isRequired = optionsBuilder.isRequired;
             this.doc = optionsBuilder.doc;
             this.aliases = optionsBuilder.aliases;
+            this.conflicts = optionsBuilder.conflicts;
         }
 
         public Option(String name, int nbParameters, Consumer<List<String>> action) {
@@ -149,7 +164,8 @@ public class CmdLineParser {
         }
 
         public static class OptionsBuilder {
-            private final HashSet<String> aliases = new HashSet<>();
+            private Set<String> aliases = new HashSet<>();
+            public Set<String> conflicts = new HashSet<>();
             private Consumer<List<String>> action;
             private String name;
             private int nbParameters;
@@ -231,6 +247,13 @@ public class CmdLineParser {
             public OptionsBuilder addAliases(String... names) {
                 Objects.requireNonNull(names);
                 aliases.addAll(Arrays.asList(names));
+                return this;
+            }
+
+            public OptionsBuilder conflictWith(String opt) {
+                Objects.requireNonNull(opt);
+                if(isOption(opt))
+                    conflicts.add(opt);
                 return this;
             }
 
