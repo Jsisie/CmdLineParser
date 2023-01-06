@@ -24,7 +24,7 @@ public class CmdLineParser {
         return paramList;
     }
 
-    public void registerOption(String name, Option opt) {
+    private void registerOption(String name, Option opt) {
         Objects.requireNonNull(name);
         Objects.requireNonNull(opt);
         if (options.containsKey(name))
@@ -56,7 +56,7 @@ public class CmdLineParser {
             throw new IllegalArgumentException("Options are missing");
     }
 
-    public void registerWithoutParameter(String name, Runnable action) {
+    public void addFlag(String name, Runnable action) {
         Objects.requireNonNull(name);
         Objects.requireNonNull(action);
         registerOption(name, new Option(name, 0, arg -> action.run()));

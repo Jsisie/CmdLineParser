@@ -55,5 +55,6 @@ public class Application {
         List<Path> files = result.stream().map(Path::of).toList();
         files.forEach(System.out::println);
         System.out.println(opt);
+        cmdLineParser.usage();
     }
 }

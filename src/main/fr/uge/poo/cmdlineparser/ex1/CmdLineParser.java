@@ -1,26 +1,28 @@
 package fr.uge.poo.cmdlineparser.ex1;
 
-import java.util.*;
-import java.util.function.Consumer;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Objects;
 
 public class CmdLineParser {
 
-    private final HashMap<String,Runnable> registeredOptions = new HashMap<>();
+    private final HashMap<String, Runnable> registeredOptions = new HashMap<>();
 
-    public void registerOption(String option, Runnable process) {
-        Objects.requireNonNull(option);
-        Objects.requireNonNull(process);
-        if(registeredOptions.containsKey(option))
-        	throw new IllegalStateException();
-        registeredOptions.put(option,process); 
+    public void addFlag(String name, Runnable action) {
+        Objects.requireNonNull(name);
+        Objects.requireNonNull(action);
+        if (registeredOptions.containsKey(name))
+            throw new IllegalStateException("The option has already been registered");
+        registeredOptions.put(name, action);
     }
 
-
     public List<String> process(String[] arguments) {
+        Objects.requireNonNull(arguments);
         ArrayList<String> files = new ArrayList<>();
         for (String argument : arguments) {
-        	var process = registeredOptions.get(argument);
-            if (process!=null)
+            var process = registeredOptions.get(argument);
+            if (process != null)
                 process.run();
             else
                 files.add(argument);

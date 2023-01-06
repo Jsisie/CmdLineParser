@@ -3,7 +3,7 @@ package fr.uge.poo.cmdlineparser.ex4;
 import java.net.InetSocketAddress;
 import java.util.Objects;
 
-class PaintOptions {
+public class PaintSettings {
     private final String windowName;
     private final boolean legacy;
     private final boolean bordered;
@@ -12,7 +12,7 @@ class PaintOptions {
     private final int borderWidth;
     private final InetSocketAddress serv;
 
-    private PaintOptions(PaintOptionsBuilder optionsBuilder) {
+    private PaintSettings(PaintOptionsBuilder optionsBuilder) {
         this.bordered = optionsBuilder.bordered;
         this.borderWidth = optionsBuilder.borderWidth;
         this.legacy = optionsBuilder.legacy;
@@ -73,10 +73,10 @@ class PaintOptions {
             return this;
         }
 
-        public PaintOptions build() {
+        public PaintSettings build() {
             if (windowName == null)
                 throw new IllegalStateException();
-            return new PaintOptions(this);
+            return new PaintSettings(this);
         }
     }
 }

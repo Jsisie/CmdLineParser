@@ -8,23 +8,23 @@ public class Application {
 
 
     public static void main(String[] args) {
-        var options = new PaintOptions.PaintOptionsBuilder();
+        var options = new PaintSettings.PaintOptionsBuilder();
         String[] arguments = {"-legacy", "-no-borders", "-window-name", "filename1", "-border-width", "4", "-min-size", "600", "600", "-remote-server", "Chatavion", "8080"};
         var cmdParser = new CmdLineParser();
 
-        cmdParser.registerOption("-legacy", __ -> options.setLegacy(true));
-        cmdParser.registerOption("-no-borders", __ -> options.setBordered(true));
-        cmdParser.registerOption("-border-width", (it) -> {
+        cmdParser.addFlag("-legacy", () -> options.setLegacy(true));
+        cmdParser.addFlag("-no-borders", () -> options.setBordered(true));
+        cmdParser.addOptionWithOneParameter("-border-width", (it) -> {
             if (!it.hasNext())
                 throw new IllegalStateException("no arguments passed");
             options.setBorderWidth(Integer.parseInt(it.next()));
         });
-        cmdParser.registerOption("-window-name", (it) -> {
+        cmdParser.addOptionWithOneParameter("-window-name", (it) -> {
             if (!it.hasNext())
                 throw new IllegalStateException("no arguments passed");
             options.setWindowName(it.next());
         });
-        cmdParser.registerOption("-min-size", (it) -> {
+        cmdParser.addOptionWithOneParameter("-min-size", (it) -> {
             if (!it.hasNext())
                 throw new IllegalStateException("no arguments passed");
             options.setWindowWidth(Integer.parseInt(it.next()));
@@ -32,7 +32,7 @@ public class Application {
                 throw new IllegalStateException("no arguments passed");
             options.setWindowHeight(Integer.parseInt(it.next()));
         });
-        cmdParser.registerOption("-remote-server", (it) -> {
+        cmdParser.addOptionWithOneParameter("-remote-server", (it) -> {
             if (!it.hasNext())
                 throw new IllegalStateException("no arguments passed");
             var hostname = it.next();

@@ -5,35 +5,35 @@ import java.util.function.Consumer;
 
 public class CmdLineParser {
 
-    private final HashMap<String, Consumer<Iterator<String>>> registeredParameters = new HashMap<>();
+    private final HashMap<String,Consumer<Iterator<String>>> registeredOptions = new HashMap<>();
 
-    public void registerOption(String option, Consumer<Iterator<String>> process) {
-        Objects.requireNonNull(option);
-        Objects.requireNonNull(process);
-        if (registeredParameters.containsKey(option))
-            throw new IllegalStateException();
-        registeredParameters.put(option, process);
+    public void addFlag(String name, Runnable action) {
+        Objects.requireNonNull(name);
+        Objects.requireNonNull(action);
+        if (registeredOptions.containsKey(name))
+            throw new IllegalStateException("The option has already been registered");
+        registeredOptions.put(name, __ -> action.run());
+    }
+
+    public void addOptionWithOneParameter(String name, Consumer<Iterator<String>> action) {
+        Objects.requireNonNull(name);
+        Objects.requireNonNull(action);
+        if(registeredOptions.containsKey(name))
+            throw new IllegalStateException("The option has already been registered");
+        registeredOptions.put(name,action);
     }
 
     public List<String> process(String[] arguments) {
-        var files = new ArrayList<String>();
+        ArrayList<String> files = new ArrayList<>();
         var it = List.of(arguments).iterator();
-        while (it.hasNext()) {
+        while(it.hasNext()) {
             var option = it.next();
-            var consumer = registeredParameters.get(option);
-            if (consumer != null)
+            var consumer = registeredOptions.get(option);
+            if(consumer != null)
                 consumer.accept(it);
             else
                 files.add(option);
         }
         return files;
-    }
-
-    public void registerWithParameter(String option, Consumer<Iterator<String>> operation) {
-        Objects.requireNonNull(option);
-        Objects.requireNonNull(operation);
-        if (registeredParameters.containsKey(option))
-            throw new IllegalStateException();
-        registeredParameters.put(option, operation);
     }
 }
